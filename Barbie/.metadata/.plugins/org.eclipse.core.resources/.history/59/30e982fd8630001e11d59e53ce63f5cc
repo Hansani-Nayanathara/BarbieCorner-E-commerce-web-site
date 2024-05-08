@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.com">
+<head>
+	<title>BarbieCorner</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="mystyle.css">
+
+		<style>
+			h1{
+				color: #800000;
+			}
+
+			main{
+				margin-top: 90px;
+				text-align: justify;
+				font-size: 20px;
+				padding-left: 50px;
+				padding-right: 50px;
+			}
+			
+			.customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  
+}
+
+.customers td, #customers th {
+  border: 1px solid #b97373;
+  padding: 8px;
+  height: 20px;
+  width: 20%;
+}
+
+.customers tr:nth-child(even){background-color: #f2f2f2;}
+
+.customers tr:hover {background-color: #ddd;}
+
+.customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:#b97373;
+  color: white;
+}
+		</style>
+
+</head>
+<body>
+
+  <header>
+  	<div class="top-header">
+    		
+    	<div class="logo">
+      		<h1>BarbieCorner</h1>
+    	</div>
+
+    	<div class="search-bar">
+      		<form>
+		        <input type="text" placeholder="Search...">
+		        <button type="submit">Search</button>
+      		</form>
+    	</div>
+
+    	<div class="user-actions">
+      
+      		<div class="cart-icon">
+        		<a href="Cart"><img src="images/download (1).png" alt="Cart Icon"></a>
+      		</div>
+    	</div>
+
+	</div>
+
+	 <div class="bottom-header">
+    	<nav>
+      		<ul>
+		         <li><a href="home">Barbie Store</a></li>
+		        <li><a href="Order">Contact</a></li>
+		        <li><a href="Register">New Barbie Register</a></li>
+		      	 <li><a href="AvailableBarbies">Available Barbies</a></li>
+		        <li><a id="open-popup">Sign In</a></li>
+
+					  <div class="popup-overlay" id="popup-overlay">
+					    <div class="popup-message">
+					      <h4>Sign in</h4>
+					      <form>
+					        <label for="name">Name:</label>
+					        <input type="text" id="name" placeholder="Enter your name">
+
+					        <label for="email">Email:</label>
+					        <input type="email" id="email" placeholder="Enter your email">
+
+					        <label for="email">Password:</label>
+					        <input type="Password" id="Password" placeholder="Enter your password">
+
+					        <button type="submit" id="submit-btn">Submit</button>
+					        <button type="button" id="close-popup">Close</button>
+					      </form>
+					    </div>
+					  </div>
+
+					   <script src="script.js"></script>
+					   
+					   					<li><a id="open-login-popup">Log In</a></li>
+					<div class="popup-overlay" id="login-popup-overlay">
+    <div class="popup-message">
+      <h4>Log in</h4>
+      <form>
+        <label for="login-name">Name:</label>
+        <input type="text" id="login-name" placeholder="Enter your name">
+
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" placeholder="Enter your password">
+
+        <button type="submit" id="login-submit-btn">Log In</button>
+        <button type="button" id="close-login-popup">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("open-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+
+    document.getElementById("open-login-popup").addEventListener("click", function() {
+      document.getElementById("login-popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-login-popup").addEventListener("click", function() {
+      document.getElementById("login-popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+  </script>
+  
+  <script src="script.js"></script>
+
+  <script>
+    document.getElementById("open-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+
+    document.getElementById("open-barbie-popup").addEventListener("click", function() {
+      document.getElementById("Barbie-popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-barbie-popup").addEventListener("click", function() {
+      document.getElementById("login-popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+  </script>
+    		 </ul>
+    	</nav>
+    </div>
+
+  </header>
+
+  <br><br><br><br><br><br>
+
+<main>
+<table class="customers">
+	<tr>
+		<th >Barbie ID</th>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Category</th>
+		<th colspan="3">Action</th>
+	</tr>
+	
+	<tr th:each="b : ${barbie}">
+		<td th:text="${b.id}"></td>
+		<td th:text="${b.name}"></td>
+		<td th:text="${b.price}"></td>
+		<td th:text="${b.category}"></td>
+		<td><a th:href="@{/mylist/{id}(id=${b.id})}">Add to My cart</a></td>
+		<td><a th:href="@{/editBarbie/{id}(id=${b.id})}">Edit Item</a></td>
+		<td><a th:href="@{/deleteBarbie/{id}(id=${b.id})}">delete Item</a></td>
+	</tr>
+
+</table>
+
+</main>
+
+	<br><br><br>
+
+
+	<footer>
+	    <div class="about-us">
+	      <table class="invisible-border">
+	    		<tr>
+			     	<th>Address</th>
+			     	<th>Quick links<br></th>
+			     	<th>Contact us</th>
+	    		</tr>
+
+	    		<tr>
+	      			<td >123,<br>Mannar Road<br>Mannar</td>
+	       			<td>Deliver Path
+	      			<br>New Products <br>Payment Methods</td>
+	      	   		<td>0145754114<br>barbiecorner@gmail.com</td>
+	    		</tr>
+
+	  		</table>
+	    </div>
+	  </footer>
+
+</body>
+</html>

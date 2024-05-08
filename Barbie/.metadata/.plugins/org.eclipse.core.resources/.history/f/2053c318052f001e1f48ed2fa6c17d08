@@ -1,0 +1,9 @@
+package lk.ac.vau.fas.Repo;
+
+import java.awt.print.Book;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BarbieRepo extends JpaRepository<Book, Integer>{
+
+}

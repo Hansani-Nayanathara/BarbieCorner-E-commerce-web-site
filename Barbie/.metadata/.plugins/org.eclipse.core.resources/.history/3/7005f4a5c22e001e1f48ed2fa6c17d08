@@ -1,0 +1,16 @@
+package lk.ac.vau.fas.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import lk.ac.vau.fas.Repo.UserRepo;
+
+public class UserServiceImpl implements UserService{
+	
+	@Autowired
+	private UserRepo repo;
+	@Override
+	public void RegisterUser(User user) {
+		
+	}
+
+}

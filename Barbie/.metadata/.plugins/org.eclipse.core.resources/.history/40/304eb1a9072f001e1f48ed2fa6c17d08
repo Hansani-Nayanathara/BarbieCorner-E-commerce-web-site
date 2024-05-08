@@ -1,0 +1,50 @@
+package lk.ac.vau.fas.Controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import lk.ac.vau.fas.Entity.Barbie;
+import lk.ac.vau.fas.Service.BarbieService;
+
+@Controller
+public class UserController {
+	
+	@GetMapping("/home")
+	public String home() {
+		return "home";
+	}
+	
+	@GetMapping("/Category")
+	public String Category() {
+		return "Category";
+	}
+	
+	@GetMapping("/Order")
+	public String Order() {
+		return "Order";
+	}
+	
+	@GetMapping("/AboutUs")
+	public String AboutUs() {
+		return "AboutUs";
+	}
+	
+	@GetMapping("/Cart")
+	public String Cart() {
+		return "Cart";
+	}
+	
+	@GetMapping("/AvailableBooks")
+	public String AvailableBooks() {
+		return "AvailableBooks";
+	}
+	private BarbieService service;
+	@PostMapping("/save")
+	public String addBook(@ModelAttribute Barbie b) {
+		service.save(b);
+		return "redirect:/AvailableBooks";
+	}
+	
+}

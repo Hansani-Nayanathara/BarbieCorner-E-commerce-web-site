@@ -1,0 +1,10 @@
+package lk.ac.vau.fas.Controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class UserController {
+	public String home() {
+		return "home";
+	}
+}

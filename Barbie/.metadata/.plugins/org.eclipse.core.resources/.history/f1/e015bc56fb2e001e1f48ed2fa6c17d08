@@ -1,0 +1,10 @@
+package lk.ac.vau.fas.Entity;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Barbie {
+	private int id;
+	private String name;
+	
+}

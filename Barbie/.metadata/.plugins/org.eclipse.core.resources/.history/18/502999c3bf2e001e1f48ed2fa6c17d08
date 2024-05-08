@@ -1,0 +1,5 @@
+package lk.ac.vau.fas.Repo;
+
+public interface UserRepo {
+
+}

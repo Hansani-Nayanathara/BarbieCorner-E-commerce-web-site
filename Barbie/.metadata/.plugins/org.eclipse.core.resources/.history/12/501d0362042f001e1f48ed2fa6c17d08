@@ -1,0 +1,8 @@
+package lk.ac.vau.fas.Service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class BookService {
+	private Bar
+}

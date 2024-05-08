@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.com">
+<head>
+	<title>BarbieCorner</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="mystyle.css">
+
+		<style>
+			
+
+			/* Slideshow container */
+			.slideshow-container {
+			  max-width: 100%;
+			  position: relative;
+			  margin: 0%;
+			}
+
+			.slideshow-container img{
+			  width: 100%;
+			  height: 200px;
+			  position: relative;
+			  margin: 0%;
+			  opacity: 0.8;
+			  filter: brightness(0.5);
+			}
+
+			/* Caption text */
+			.text1 {
+			  position: absolute;
+			  top: 20%;
+			  width: 100%;
+			  text-align: center;
+			  font-size: 50px;
+			  font-family: 'Courier New', monospace;
+			  color: #e6cccc;
+			}
+			.text2 {
+			  position: absolute;
+			  top: 50%;
+			  width: 100%;
+			  text-align: center;
+			  font-size: 30px;
+			  color: #d3a6a6;
+			}
+
+			.dot {
+			  height: 15px;
+			  width: 15px;
+			  margin: 0 2px;
+			  background-color: #bbb;
+			  border-radius: 50%;
+			  display: inline-block;
+			  transition: background-color 0.6s ease;
+			}
+
+			.active {
+			  background-color: #717171;
+			}
+
+			/* Fading animation */
+			.fade {
+			  animation-name: fade;
+			  animation-duration: 1.5s;
+			}
+
+			@keyframes fade {
+			  from {opacity: .4} 
+			  to {opacity: 1}
+			}
+
+
+
+
+		</style>
+
+</head>
+<body>
+
+  <header>
+  	<div class="top-header">
+    		
+    	<div class="logo">
+      		<h1>BarbieCorner</h1>
+    	</div>
+
+    	<div class="search-bar">
+      		<form>
+		        <input type="text" placeholder="Search...">
+		        <button type="submit">Search</button>
+      		</form>
+    	</div>
+
+    	<div class="user-actions">
+      
+      		<div class="cart-icon">
+        		<a href="Cart"><img src="images/download (1).png" alt="Cart Icon"></a>
+      		</div>
+    	</div>
+
+	</div>
+
+	 <div class="bottom-header">
+    	<nav>
+      		<ul>
+		        <li><a href="home">Barbie Store</a></li>
+		        <li><a href="Order">Contact</a></li>
+		        <li><a href="Register">New Barbie Register</a></li>
+		      	 <li><a href="AvailableBarbies">Available Barbies</a></li>
+		        <li><a id="open-popup">Sign In</a></li>
+
+					  <div class="popup-overlay" id="popup-overlay">
+					    <div class="popup-message">
+					      <h4>Sign in</h4>
+					      <form>
+					        <label for="name">Name:</label>
+					        <input type="text" id="name" placeholder="Enter your name">
+
+					        <label for="email">Email:</label>
+					        <input type="email" id="email" placeholder="Enter your email">
+
+					        <label for="email">Password:</label>
+					        <input type="Password" id="Password" placeholder="Enter your password">
+
+					        <button type="submit" id="submit-btn">Submit</button>
+					        <button type="button" id="close-popup">Close</button>
+					      </form>
+					    </div>
+					  </div>
+
+					   <script src="script.js"></script>
+					   
+					   					<li><a id="open-login-popup">Log In</a></li>
+					<div class="popup-overlay" id="login-popup-overlay">
+    <div class="popup-message">
+      <h4>Log in</h4>
+      <form>
+        <label for="login-name">Name:</label>
+        <input type="text" id="login-name" placeholder="Enter your name">
+
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" placeholder="Enter your password">
+
+        <button type="submit" id="login-submit-btn">Log In</button>
+        <button type="button" id="close-login-popup">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("open-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+
+    document.getElementById("open-login-popup").addEventListener("click", function() {
+      document.getElementById("login-popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-login-popup").addEventListener("click", function() {
+      document.getElementById("login-popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+  </script>
+  
+  <script src="script.js"></script>
+      <li><a href="register">New Barbie Register</a></li>
+
+  <script>
+    document.getElementById("open-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+
+    document.getElementById("open-barbie-popup").addEventListener("click", function() {
+      document.getElementById("Barbie-popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-barbie-popup").addEventListener("click", function() {
+      document.getElementById("login-popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+  </script>
+
+    		 </ul>
+    	</nav>
+
+  </header>
+
+  <br><br><br><br><br><br><br>
+
+  <main>
+
+  	<div class="slideshow-container">
+		<img src="images/4.jpg" style="width:100% ">
+
+		<div class="mySlides fade">
+  	 		<div class="text1"><b>Islandwide Delivery</b></div>
+  			<div class="text2">Ensuring convenience</div>
+		</div>
+
+		<div class="mySlides fade">
+ 			<div class="text1"><b>Secure Payments</b></div>
+  			<div class="text2">Safe and efficient</div>
+		</div>
+
+		<div class="mySlides fade">
+  			<div class="text1"><b>Best Price</b></div>
+  			<div class="text2">Ultimate affordability</div>
+		</div>
+
+	</div>
+	<br>
+
+	<div style="text-align:center">
+		  <span class="dot"></span> 
+		  <span class="dot"></span> 
+		  <span class="dot"></span> 
+	</div>
+
+	<script>
+		let slideIndex = 0;
+		showSlides();
+
+		function showSlides() {
+			  let i;
+			  let slides = document.getElementsByClassName("mySlides");
+			  let dots = document.getElementsByClassName("dot");
+			  for (i = 0; i < slides.length; i++) {
+			    slides[i].style.display = "none";  
+			  }
+			  slideIndex++;
+			  if (slideIndex > slides.length) {slideIndex = 1}    
+			  for (i = 0; i < dots.length; i++) {
+			    dots[i].className = dots[i].className.replace(" active", "");
+			  }
+			  slides[slideIndex-1].style.display = "block";  
+			  dots[slideIndex-1].className += " active";
+			  setTimeout(showSlides, 2000); // Change image every 2 seconds
+		}
+	</script>	
+
+<h2>Welcome Barbie Store</h2>
+<p>	The project main goal is to develop an online dolls store where users can search
+for and make purchases of dolls on title or code. The users chose dolls are displayed in a 
+table format, and they also can order them via online using a debit card or credit card 
+payment method. Instead of going to a Doll store and wasting time, the user can purchase 
+a doll on this website. 
+</p>
+<P>
+An online dolls store is a web application that allows customers to buy dolls 
+online. Customers can search for a doll by title, colour, size, category using a web 
+browser, add into their shopping cart, and then purchase it using a debit or credit card 
+transaction. The user can log in using his or her account information. New customers can 
+create an account with should include their information. The user can also provide 
+feedback to a doll and give ratings out of five. Dolls are categories based on colour, size, 
+and shape.</p>
+  </main>
+
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+	<footer>
+	    <div class="about-us">
+	      <table class="invisible-border">
+	    		<tr>
+			     	<th>Address</th>
+			     	<th>Quick links<br></th>
+			     	<th>Contact us</th>
+	    		</tr>
+
+	    		<tr>
+	      			<td >123,<br>Mannar Road<br>Mannar</td>
+	       			<td>Deliver Path
+	      			<br>New Products <br>Payment Methods</td>
+	      	   		<td>0145754114<br>barbiecorner@gmail.com</td>
+	    		</tr>
+
+	  		</table>
+	    </div>
+	  </footer>
+
+</body>
+</html>
+
+
+

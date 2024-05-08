@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.com">
+<head>
+	<title>BarbieCorner</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<style>
+			
+			* {box-sizing: border-box;}
+
+		body {
+		  margin: 0;
+		  padding: 0;
+		  background-color: #e6cccc;
+		  font-family: Arial, sans-serif;
+		}
+		.top-header {
+		  background-color: black; 
+		  display: flex;
+		  align-items: center;
+		  padding-left: 15px;
+		  padding-right: 20px;
+		  display: fixed;
+		}
+
+		.bottom-header {
+		  background-color: #8b1616;
+				  padding: 10px;
+				  text-align: center;
+		}
+		header {
+		  position: fixed;
+		  z-index: 9999;
+		  top: 0;
+		  left: 0;
+		  right: 0;
+		}
+
+		.logo {
+		  flex: 1;
+		}
+
+		.logo {
+		  margin: 0;
+		  font-size: 17px;
+		  color: white;
+		}
+
+		.search-bar {
+		  flex: 7;
+		  display: flex;
+		  justify-content: flex-end;
+
+		}
+
+		.search-bar form {
+		  display: flex;
+		}
+
+		.search-bar input[type="text"] {
+		  padding: 8px;
+		  border: 1px solid #fff;
+		  border-radius: 5px 0 0 5px;
+		  font-size: 16px;
+		  outline: none;
+		  color: #000;
+		  background-color:  #f9f3f3;
+		}
+
+		.search-bar button {
+		  padding: 8px;
+		  border: 1px solid #fff;
+		  border-left: none;
+		  border-radius: 0 5px 5px 0;
+		  background-color: #fff;
+		  font-size: 16px;
+		  cursor: pointer;
+		  color: #000;
+		}
+
+		.user-actions {
+		  flex: 1;
+		  display: flex;
+		  justify-content: flex-end;
+		}
+
+		.cart-icon {
+		  margin-left: 10px;
+		  display: flex;
+		  align-items: center;
+		  padding-right: 10px;
+		  padding-left: 20px;
+		}
+
+		.cart-icon img {
+		  width: 50px;
+		  height: 50px;
+		}
+
+		nav ul {
+		  list-style: none;
+		  padding: 0;
+		  margin: 0;
+		}
+
+		nav li {
+		  display: inline;
+		  margin-right: 20px;
+		  font-size: 18px;
+		}
+
+		nav li:last-child {
+		  margin-right: 0;
+		}
+
+		nav a {
+		  color:white;
+		  text-decoration: none;
+		  padding: 5px 10px;
+		}
+
+		nav a:hover {
+		  background-color: #a04040;
+		  color:white;
+		  border-radius: 5px;
+		}
+
+		@media only screen and (max-width: 300px) {
+			  .text {font-size: 11px}
+			}
+
+
+		input[type="text"] {
+		  padding: 8px 16px;
+		  border: 1px solid pink;
+		  border-radius: 5px 0 0 5px;
+		  font-size: 16px;
+		  outline: none;
+		}
+
+		button {
+		  padding: 8px 16px;
+		  border: 1px solid #ccc;
+		  border-left: none;
+		  border-radius: 0 5px 5px 0;
+		  background-color: #f0f0f0;
+		  font-size: 16px;
+		  cursor: pointer;
+		}
+
+		button:hover {
+		  background-color: #ddd;
+		}
+				.product-box {
+		  width: 250px;
+		  border: 1px solid #ddd;
+		  border-radius: 5px;
+		  padding: 10px;
+		  text-align: center;
+		  float: left;
+		  margin: 30px;
+		}
+
+		.product-box img {
+		  width: 100%;
+		  height: 300px;
+		  border-radius: 5px;
+		  margin-bottom: 10px;
+		}
+
+		.product-name {
+		  font-size: 18px;
+		  font-weight: bold;
+		  margin-bottom: 5px;
+		}
+
+		.product-description {
+		  font-size: 14px;
+		  color: #777;
+		  margin-bottom: 10px;
+		}
+
+		.product-price {
+		  font-size: 20px;
+		  color: #8b1616; /* Pink color for the price */
+		  margin-bottom: 10px;
+		}
+
+		.add-to-cart {
+		  background-color: #8b1616; /* Pink color for the button */
+		  color: white;
+		  padding: 8px 12px;
+		  border: none;
+		  border-radius: 5px;
+		  cursor: pointer;
+		  font-size: 16px;
+		  transition: background-color 0.3s ease;
+		}
+
+		.add-to-cart:hover {
+		  background-color: #ff1493; /* Darker pink color on hover */
+		}
+
+		footer {
+		  background-color: black; /* Dark background color for the footer */
+		  color: white; /* Text color for the footer */
+		  padding: 40px;
+		  text-align: center;
+		  width: 100%;
+
+		}
+
+		.about-us{
+			width: 100%;
+		}
+
+
+		.content{
+			background-color: none;
+			margin: 30px;
+			padding: 40px;
+			width: 100%;
+		}
+
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Darkened background using rgba() */
+  z-index: 9999;
+}
+
+.popup-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #c08080;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.popup-message h4 {
+  margin-top: 0;
+  color: black;
+}
+
+.popup-message form {
+  display: flex;
+  flex-direction: column;
+  border: 3px #800000;
+
+}
+
+.popup-message label {
+  margin-bottom: 5px;
+  text-align: left;
+  padding: 10px;
+  margin: 10px;
+
+}
+
+.popup-message input {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+    text-align: left;
+    width: 300px;
+    background-color: #dfbfbf;
+}
+
+.popup-message button {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: #800000; /* Pink background for the buttons */
+  color: white;
+  cursor: pointer;
+  margin: 8px;
+  font-size: 15px;
+}
+
+#open-popup:checked ~ #popup-overlay {
+  display: block;
+}
+
+.login-button {
+  margin: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.close-button {
+  cursor: pointer;
+}
+
+#login-popup-overlay:checked ~ .popup-overlay {
+  display: block;
+}
+
+label{
+			width: 300px;
+			height: 25px;
+			padding: 5px;
+		}
+			h1{
+				color: #800000;
+			}
+
+			main{
+				margin-top: 90px;
+				
+				font-size: 17px;
+				padding-left: 40px;
+				padding-right: 40px;
+			}
+			
+			a{
+				text-decoration: none;
+			}
+			
+			.customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+    text-align: center;
+  
+}
+
+.customers td, .customers th {
+  border: 1px solid #b97373;
+  padding: 8px;
+  height: 20%;
+   text-align: center;
+   width: 10%;
+}
+
+.customers tr:nth-child(even){background-color: #f2f2f2;}
+
+.customers tr:hover {background-color: #ddd;}
+
+.customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:#b97373;
+  color: white;
+}
+		</style>
+
+</head>
+<body>
+
+  <header>
+  	<div class="top-header">
+    		
+    	<div class="logo">
+      		<h1>BarbieCorner</h1>
+    	</div>
+
+    	<div class="search-bar">
+      		<form>
+		        <input type="text" placeholder="Search...">
+		        <button type="submit">Search</button>
+      		</form>
+    	</div>
+
+    	<div class="user-actions">
+      
+      		<div class="cart-icon">
+        		<a href="Cart"><img src="images/download (1).png" alt="Cart Icon"></a>
+      		</div>
+    	</div>
+
+	</div>
+
+	 <div class="bottom-header">
+    	<nav>
+      		<ul>
+		         <li><a href="home">Barbie Store</a></li>
+		        <li><a href="Order">Contact</a></li>
+		        <li><a href="Register">New Barbie Register</a></li>
+		      	 <li><a href="AvailableBarbies">Available Barbies</a></li>
+		        <li><a id="open-popup">Sign In</a></li>
+
+					  <div class="popup-overlay" id="popup-overlay">
+					    <div class="popup-message">
+					      <h4>Sign in</h4>
+					      <form>
+					        <label for="name">Name:</label>
+					        <input type="text" id="name" placeholder="Enter your name">
+
+					        <label for="email">Email:</label>
+					        <input type="email" id="email" placeholder="Enter your email">
+
+					        <label for="email">Password:</label>
+					        <input type="Password" id="Password" placeholder="Enter your password">
+
+					        <button type="submit" id="submit-btn">Submit</button>
+					        <button type="button" id="close-popup">Close</button>
+					      </form>
+					    </div>
+					  </div>
+
+					   <script src="script.js"></script>
+					   
+					   					<li><a id="open-login-popup">Log In</a></li>
+					<div class="popup-overlay" id="login-popup-overlay">
+    <div class="popup-message">
+      <h4>Log in</h4>
+      <form>
+        <label for="login-name">Name:</label>
+        <input type="text" id="login-name" placeholder="Enter your name">
+
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" placeholder="Enter your password">
+
+        <button type="submit" id="login-submit-btn">Log In</button>
+        <button type="button" id="close-login-popup">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("open-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+
+    document.getElementById("open-login-popup").addEventListener("click", function() {
+      document.getElementById("login-popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-login-popup").addEventListener("click", function() {
+      document.getElementById("login-popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+  </script>
+  
+  <script src="script.js"></script>
+
+  <script>
+    document.getElementById("open-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+
+    document.getElementById("open-barbie-popup").addEventListener("click", function() {
+      document.getElementById("Barbie-popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-barbie-popup").addEventListener("click", function() {
+      document.getElementById("login-popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+  </script>
+    		 </ul>
+    	</nav>
+    </div>
+
+  </header>
+
+  <br><br><br><br><br><br>
+
+<main>
+<table class="customers">
+	<tr>
+		<th >Barbie ID</th>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Category</th>
+		<th colspan="3">Action</th>
+	</tr>
+	
+	<tr th:each="b : ${barbie}">
+		<td th:text="${b.id}"></td>
+		<td th:text="${b.name}"></td>
+		<td th:text="${b.price}"></td>
+		<td th:text="${b.category}"></td>
+		<td><a th:href="@{/mylist/{id}(id=${b.id})}">Add to My cart</a></td>
+		<td><a th:href="@{/editBarbie/{id}(id=${b.id})}">Edit Item</a></td>
+		<td><a th:href="@{/deleteBarbie/{id}(id=${b.id})}">delete Item</a></td>
+	</tr>
+
+</table>
+
+</main>
+
+	<br><br><br>
+
+
+	<footer>
+	    <div class="about-us">
+	      <table class="invisible-border">
+	    		<tr>
+			     	<th>Address</th>
+			     	<th>Quick links<br></th>
+			     	<th>Contact us</th>
+	    		</tr>
+
+	    		<tr>
+	      			<td >123,<br>Mannar Road<br>Mannar</td>
+	       			<td>Deliver Path
+	      			<br>New Products <br>Payment Methods</td>
+	      	   		<td>0145754114<br>barbiecorner@gmail.com</td>
+	    		</tr>
+
+	  		</table>
+	    </div>
+	  </footer>
+
+</body>
+</html>

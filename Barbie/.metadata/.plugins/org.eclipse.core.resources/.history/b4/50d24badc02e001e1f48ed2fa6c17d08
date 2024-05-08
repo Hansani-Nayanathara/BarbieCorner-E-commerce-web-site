@@ -1,0 +1,5 @@
+package lk.ac.vau.fas.Service;
+
+public interface UserService {
+	public void RegisterUser(User user);
+}

@@ -1,0 +1,18 @@
+package lk.ac.vau.fas.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import lk.ac.vau.fas.Entity.Barbie;
+import lk.ac.vau.fas.Repo.BarbieRepo;
+
+@Service
+public class BarbieService {
+	
+	@Autowired
+	private BarbieRepo Brepo;
+	
+	public void saveBarbie(Barbie b) {
+		Brepo.saveAll(b);
+	}
+}

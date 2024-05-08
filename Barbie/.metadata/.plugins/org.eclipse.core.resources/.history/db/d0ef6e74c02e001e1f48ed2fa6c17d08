@@ -1,0 +1,9 @@
+package lk.ac.vau.fas.Repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import lk.ac.vau.fas.Entity.User;
+
+public interface UserRepo extends JpaRepository<User, String>{
+
+}

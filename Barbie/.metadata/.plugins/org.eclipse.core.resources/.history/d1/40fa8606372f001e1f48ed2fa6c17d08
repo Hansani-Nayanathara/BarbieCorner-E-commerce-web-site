@@ -1,0 +1,22 @@
+package lk.ac.vau.fas.Service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import lk.ac.vau.fas.Entity.Cart;
+
+@Service
+public class CartService {
+	@Autowired
+	private CartService service;
+	
+	public void saveCart(Cart cart) {
+		service.saveCart(cart);
+	}
+	
+	public List<Cart> getAllBarbies(){
+		return service.getAllBarbies();
+	}
+}

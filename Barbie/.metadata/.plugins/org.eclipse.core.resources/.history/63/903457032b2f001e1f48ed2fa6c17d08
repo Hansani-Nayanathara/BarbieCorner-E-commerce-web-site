@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.com">
+<head>
+	<title>BarbieCorner</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="mystyle.css">
+
+		<style>
+			
+
+			/* Slideshow container */
+			.slideshow-container {
+			  max-width: 100%;
+			  position: relative;
+			  margin: 0%;
+			}
+
+			.slideshow-container img{
+			  width: 100%;
+			  height: 200px;
+			  position: relative;
+			  margin: 0%;
+			  opacity: 0.8;
+			  filter: brightness(0.5);
+			}
+
+			/* Caption text */
+			.text1 {
+			  position: absolute;
+			  top: 20%;
+			  width: 100%;
+			  text-align: center;
+			  font-size: 50px;
+			  font-family: 'Courier New', monospace;
+			  color: #e6cccc;
+			}
+			.text2 {
+			  position: absolute;
+			  top: 50%;
+			  width: 100%;
+			  text-align: center;
+			  font-size: 30px;
+			  color: #d3a6a6;
+			}
+
+			.dot {
+			  height: 15px;
+			  width: 15px;
+			  margin: 0 2px;
+			  background-color: #bbb;
+			  border-radius: 50%;
+			  display: inline-block;
+			  transition: background-color 0.6s ease;
+			}
+
+			.active {
+			  background-color: #717171;
+			}
+
+			/* Fading animation */
+			.fade {
+			  animation-name: fade;
+			  animation-duration: 1.5s;
+			}
+
+			@keyframes fade {
+			  from {opacity: .4} 
+			  to {opacity: 1}
+			}
+
+
+
+
+		</style>
+
+</head>
+<body>
+
+  <header>
+  	<div class="top-header">
+    		
+    	<div class="logo">
+      		<h1>BarbieCorner</h1>
+    	</div>
+
+    	<div class="search-bar">
+      		<form>
+		        <input type="text" placeholder="Search...">
+		        <button type="submit">Search</button>
+      		</form>
+    	</div>
+
+    	<div class="user-actions">
+      
+      		<div class="cart-icon">
+        		<a href="Cart"><img src="images/download (1).png" alt="Cart Icon"></a>
+      		</div>
+    	</div>
+
+	</div>
+
+	 <div class="bottom-header">
+    	<nav>
+      		<ul>
+		        <li><a href="home">Home</a></li>
+		        <li><a href="Category">Categories</a></li>
+		        <li><a href="Order">Contact</a></li>
+		        <li><a href="AboutUs">About</a></li>
+		        		        <li><a href="AvailableBarbies">Available Books</a></li>
+		        <li><a id="open-popup">Sign In</a></li>
+
+					  <div class="popup-overlay" id="popup-overlay">
+					    <div class="popup-message">
+					      <h4>Sign in</h4>
+					      <form>
+					        <label for="name">Name:</label>
+					        <input type="text" id="name" placeholder="Enter your name">
+
+					        <label for="email">Email:</label>
+					        <input type="email" id="email" placeholder="Enter your email">
+
+					        <label for="email">Password:</label>
+					        <input type="Password" id="Password" placeholder="Enter your email">
+
+					        <button type="submit" id="submit-btn">Submit</button>
+					        <button type="button" id="close-popup">Close</button>
+					      </form>
+					    </div>
+					  </div>
+
+					   <script src="script.js"></script>
+					   
+					   					<li><a id="open-login-popup">Log In</a></li>
+					<div class="popup-overlay" id="login-popup-overlay">
+    <div class="popup-message">
+      <h4>Log in</h4>
+      <form>
+        <label for="login-name">Name:</label>
+        <input type="text" id="login-name" placeholder="Enter your name">
+
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" placeholder="Enter your password">
+
+        <button type="submit" id="login-submit-btn">Log In</button>
+        <button type="button" id="close-login-popup">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("open-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+
+    document.getElementById("open-login-popup").addEventListener("click", function() {
+      document.getElementById("login-popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-login-popup").addEventListener("click", function() {
+      document.getElementById("login-popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+  </script>
+  
+  <script src="script.js"></script>
+      <li><a id="open-barbie-popup">New Barbie Register</a></li>
+    <div class="popup-overlay" id="Barbie-popup-overlay">
+    <div class="popup-message">
+      <h4>New Barbie Register</h4>
+      <form th:action="@{/save}" method="post">
+        <label for="login-name">Id: </label>
+        <input type="text" id="id" >
+
+        <label for="login-name">Name: </label>
+        <input type="text" id="name" >
+
+        <label for="login-name">Description:</label>
+        <input type="text" id="description" >
+
+        <label for="login-name">Price:</label>
+        <input type="text" id="price" >
+
+<label for="login-name">Category</label>
+        <input type="text" id="category" >
+        
+        <button type="submit" id="login-submit-btn">Save</button>
+        <button type="button" id="close-barbie-popup">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("open-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+
+    document.getElementById("open-barbie-popup").addEventListener("click", function() {
+      document.getElementById("Barbie-popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-barbie-popup").addEventListener("click", function() {
+      document.getElementById("login-popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+  </script>
+
+    		 </ul>
+    	</nav>
+
+  </header>
+
+  <br><br><br><br><br><br><br>
+
+  <main>
+
+  	<div class="slideshow-container">
+		<img src="images/4.jpg" style="width:100% ">
+
+		<div class="mySlides fade">
+  	 		<div class="text1"><b>Islandwide Delivery</b></div>
+  			<div class="text2">Ensuring convenience</div>
+		</div>
+
+		<div class="mySlides fade">
+ 			<div class="text1"><b>Secure Payments</b></div>
+  			<div class="text2">Safe and efficient</div>
+		</div>
+
+		<div class="mySlides fade">
+  			<div class="text1"><b>Best Price</b></div>
+  			<div class="text2">Ultimate affordability</div>
+		</div>
+
+	</div>
+	<br>
+
+	<div style="text-align:center">
+		  <span class="dot"></span> 
+		  <span class="dot"></span> 
+		  <span class="dot"></span> 
+	</div>
+
+	<script>
+		let slideIndex = 0;
+		showSlides();
+
+		function showSlides() {
+			  let i;
+			  let slides = document.getElementsByClassName("mySlides");
+			  let dots = document.getElementsByClassName("dot");
+			  for (i = 0; i < slides.length; i++) {
+			    slides[i].style.display = "none";  
+			  }
+			  slideIndex++;
+			  if (slideIndex > slides.length) {slideIndex = 1}    
+			  for (i = 0; i < dots.length; i++) {
+			    dots[i].className = dots[i].className.replace(" active", "");
+			  }
+			  slides[slideIndex-1].style.display = "block";  
+			  dots[slideIndex-1].className += " active";
+			  setTimeout(showSlides, 2000); // Change image every 2 seconds
+		}
+	</script>	
+
+    <div class="content">
+	 	<div class="product-box">
+		    <img src="images/download (1).jpg" alt="Blue Doll">
+		    <h3 class="product-name">Blue Princess</h3>
+		    <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		    <p class="product-price">Rs.800</p>
+		    <button class="add-to-cart">Add to Cart</button>
+		</div>
+
+		<div class="product-box">
+		    <img src="images/images (2).jpg" alt="Blue Doll">
+		    <h3 class="product-name">Red Princess Doll</h3>
+		    <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		    <p class="product-price">Rs.800</p>
+		    <button class="add-to-cart">Add to Cart</button>
+		</div>
+
+	 	<div class="product-box">
+		    <img src="images/images (1).jpg" alt="Blue Doll">
+		    <h3 class="product-name">Blue Princess</h3>
+		    <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		    <p class="product-price">Rs.800</p>
+		    <button class="add-to-cart">Add to Cart</button>
+		</div>
+
+		<div class="product-box">
+		    <img src="images/images (3).jpg" alt="Blue Doll">
+		    <h3 class="product-name">Red Princess Doll</h3>
+		    <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		    <p class="product-price">Rs.800</p>
+		    <button class="add-to-cart" th:href="@{/myList/{id}/{id=${b.id}}}">Add to Cart</button>
+		</div>
+	</div>
+
+  </main>
+
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+	<footer>
+	    <div class="about-us">
+	      <table class="invisible-border">
+	    		<tr>
+			     	<th>Address</th>
+			     	<th>Quick links<br></th>
+			     	<th>Contact us</th>
+	    		</tr>
+
+	    		<tr>
+	      			<td >123,<br>Mannar Road<br>Mannar</td>
+	       			<td>Deliver Path
+	      			<br>New Products <br>Payment Methods</td>
+	      	   		<td>0145754114<br>barbiecorner@gmail.com</td>
+	    		</tr>
+
+	  		</table>
+	    </div>
+	  </footer>
+
+</body>
+</html>
+
+
+

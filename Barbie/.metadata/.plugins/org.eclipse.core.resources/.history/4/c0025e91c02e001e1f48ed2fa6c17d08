@@ -1,0 +1,13 @@
+package lk.ac.vau.fas.Service;
+
+import lk.ac.vau.fas.Repo.UserRepo;
+
+public class UserServiceImpl implements UserService{
+	
+	private UserRepo repo;
+	@Override
+	public void RegisterUser() {
+		
+	}
+
+}

@@ -1,0 +1,18 @@
+package lk.ac.vau.fas.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import lk.ac.vau.fas.Entity.Cart;
+import lk.ac.vau.fas.Repo.CartRepository;
+
+@Service
+public class CartService {
+	
+	@Autowired
+	private CartRepository repo;
+	
+	public void saveBarbie(Cart item) {
+		repo.save(item);
+	}
+}

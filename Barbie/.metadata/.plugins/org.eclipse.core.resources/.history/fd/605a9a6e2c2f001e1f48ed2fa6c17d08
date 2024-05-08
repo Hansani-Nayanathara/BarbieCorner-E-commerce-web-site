@@ -1,0 +1,19 @@
+package lk.ac.vau.fas.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import lk.ac.vau.fas.Entity.User;
+import lk.ac.vau.fas.Repo.UserRepo;
+
+@Service
+public class UserServiceImpl implements UserService{
+	
+	@Autowired
+	private UserRepo repo;
+	@Override
+	public void RegisterUser(User user) {
+		repo.save(user);
+	}
+
+}

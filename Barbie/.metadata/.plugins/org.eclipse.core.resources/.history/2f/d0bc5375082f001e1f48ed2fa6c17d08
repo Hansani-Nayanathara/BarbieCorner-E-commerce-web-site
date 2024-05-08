@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BarbieCorner</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="mystyle.css">
+
+		<style>
+			h1{
+				color: #800000;
+			}
+
+			main{
+				margin: 80px;
+				text-align: justify;
+				font-size: 20px;
+				padding-left: 150px;
+				padding-right: 150px;
+			}
+		</style>
+
+</head>
+<body>
+
+  <header>
+  	<div class="top-header">
+    		
+    	<div class="logo">
+      		<h1>BarbieCorner</h1>
+    	</div>
+
+    	<div class="search-bar">
+      		<form>
+		        <input type="text" placeholder="Search...">
+		        <button type="submit">Search</button>
+      		</form>
+    	</div>
+
+    	<div class="user-actions">
+      
+      		<div class="cart-icon">
+        		<a href="Cart"><img src="images/download (1).png" alt="Cart Icon"></a>
+      		</div>
+    	</div>
+
+	</div>
+
+	 <div class="bottom-header">
+    	<nav>
+      		<ul>
+		        <li><a href="home">Home</a></li>
+		        <li><a href="Category">Categories</a></li>
+		        <li><a href="Order">Contact</a></li>
+		        <li><a href="AboutUs">About</a></li>
+		        		        <li><a href="AvailableBooks">Available Books</a></li>
+		        <li><a id="open-popup">Sign In</a></li>
+
+					  <div class="popup-overlay" id="popup-overlay">
+					    <div class="popup-message">
+					      <h4>Sign in</h4>
+					      <form>
+					        <label for="name">Name:</label>
+					        <input type="text" id="name" placeholder="Enter your name">
+
+					        <label for="email">Email:</label>
+					        <input type="email" id="email" placeholder="Enter your email">
+
+					        <label for="email">Password:</label>
+					        <input type="Password" id="Password" placeholder="Enter your email">
+
+					        <button type="submit" id="submit-btn">Submit</button>
+					        <button type="button" id="close-popup">Close</button>
+					      </form>
+					    </div>
+					  </div>
+
+					   <script src="script.js"></script>
+					   
+					   					<li><a id="open-login-popup">Log In</a></li>
+					<div class="popup-overlay" id="login-popup-overlay">
+    <div class="popup-message">
+      <h4>Log in</h4>
+      <form>
+        <label for="login-name">Name:</label>
+        <input type="text" id="login-name" placeholder="Enter your name">
+
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" placeholder="Enter your password">
+
+        <button type="submit" id="login-submit-btn">Log In</button>
+        <button type="button" id="close-login-popup">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("open-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+
+    document.getElementById("open-login-popup").addEventListener("click", function() {
+      document.getElementById("login-popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-login-popup").addEventListener("click", function() {
+      document.getElementById("login-popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+  </script>
+  
+    <script src="script.js"></script>
+        <li><a id="open-barbie-popup">New Barbie Register</a></li>
+    <div class="popup-overlay" id="Barbie-popup-overlay">
+    <div class="popup-message">
+      <h4>New Barbie Register</h4>
+      <form>
+        <label for="login-name">Id: </label>
+        <input type="text" id="login-name" >
+
+        <label for="login-name">Name: </label>
+        <input type="text" id="login-name" >
+
+        <label for="login-name">Description:</label>
+        <input type="text" id="login-name" >
+
+        <label for="login-name">Price:</label>
+        <input type="text" id="login-name" >
+
+
+
+        <button type="submit" id="login-submit-btn">Save</button>
+        <button type="button" id="close-barbie-popup">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("open-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-popup").addEventListener("click", function() {
+      document.getElementById("popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+
+    document.getElementById("open-barbie-popup").addEventListener("click", function() {
+      document.getElementById("Barbie-popup-overlay").style.display = "block";
+      document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    });
+
+    document.getElementById("close-barbie-popup").addEventListener("click", function() {
+      document.getElementById("login-popup-overlay").style.display = "none";
+      document.body.style.backgroundColor = "initial";
+    });
+  </script>
+    		 </ul>
+    	</nav>
+    </div>
+
+  </header>
+
+  <br><br><br><br><br><br>
+
+<main>
+<h1>About Us</h1>
+<p>
+	
+	The project main goal is to develop an online dolls store where users can search
+for and make purchases of dolls on title or code. The users chose dolls are displayed in a 
+table format, and they also can order them via online using a debit card or credit card 
+payment method. Instead of going to a Doll store and wasting time, the user can purchase 
+a doll on this website. 
+</p>
+<P>
+An online dolls store is a web application that allows customers to buy dolls 
+online. Customers can search for a doll by title, colour, size, category using a web 
+browser, add into their shopping cart, and then purchase it using a debit or credit card 
+transaction. The user can log in using his or her account information. New customers can 
+create an account with should include their information. The user can also provide 
+feedback to a doll and give ratings out of five. Dolls are categories based on colour, size, 
+and shape.
+</P>
+<p>
+Administrator can add, delete dolls, handle order information, edit dolls data and 
+member information. 
+</p>
+</main>
+
+	<br><br><br>
+
+
+	<footer>
+	    <div class="about-us">
+	      <table class="invisible-border">
+	    		<tr>
+			     	<th>Address</th>
+			     	<th>Quick links<br></th>
+			     	<th>Contact us</th>
+	    		</tr>
+
+	    		<tr>
+	      			<td >123,<br>Mannar Road<br>Mannar</td>
+	       			<td>Deliver Path
+	      			<br>New Products <br>Payment Methods</td>
+	      	   		<td>0145754114<br>barbiecorner@gmail.com</td>
+	    		</tr>
+
+	  		</table>
+	    </div>
+	  </footer>
+
+</body>
+</html>
